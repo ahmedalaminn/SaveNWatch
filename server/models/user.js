@@ -12,7 +12,7 @@ const userSchema = new mongoose.Schema({
        {
            imdbID: { type: String, required: true },
            name: { type: String, required: true },
-           type: { type: String, enum: ['movie', 'show'], required: true }
+           type: { type: String, enum: ['movie', 'series'], required: true }
        }
    ]
 });
