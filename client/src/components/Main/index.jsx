@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import styles from "./styles.module.css";
+const OMDBAPIKEY = process.env.REACT_APP_OMDBAPIKEY;
 
 const Main = () => {
     const [user, setUser] = useState({ watchlist: [] });
@@ -12,7 +13,6 @@ const Main = () => {
             .then(response => {
                 const userData = response.data[0]; 
                 setUser(userData);
-                console.log('Fetched user:', userData); 
             })
             .catch(err => console.log(err));
     }, []);
@@ -32,7 +32,7 @@ const Main = () => {
     };
 
     const fetchMovies = async () => {
-        const URL = `https://www.omdbapi.com?s=${searchTerm}&apikey=80eb5c7d`;
+        const URL = `https://www.omdbapi.com?s=${searchTerm}&apikey=${OMDBAPIKEY}`;
         const response = await fetch(URL);
         const responsejson = await response.json();
         setData(responsejson.Search || []);
@@ -67,7 +67,6 @@ const Main = () => {
         
             <div className={styles.main_container}>
                 <div className={styles.sectionTitle}>Movies</div>
-                {/* Movie Watchlist */}
                 <div className={styles.horizontalScroll}>
                     {user.watchlist && user.watchlist.length > 0 ? (
                         user.watchlist
@@ -75,7 +74,7 @@ const Main = () => {
                             .map((item, index) => (
                                 <div key={index} className={styles.resultItem}>
                                     <p className={styles.bold}>{item.name}</p>
-                                    <img src={`https://img.omdbapi.com/?i=${item.imdbID}&apikey=80eb5c7d`} alt={item.name} className={styles.poster} />
+                                    <img src={`https://img.omdbapi.com/?i=${item.imdbID}&apikey=${OMDBAPIKEY}`} alt={item.name} className={styles.poster} />
                                 </div>
                             ))
                     ) : (
@@ -84,7 +83,6 @@ const Main = () => {
                 </div>
     
                 <div className={styles.sectionTitle}>Series</div>
-                {/* Series Watchlist */}
                 <div className={styles.horizontalScroll}>
                     {user.watchlist && user.watchlist.length > 0 ? (
                         user.watchlist
@@ -92,7 +90,7 @@ const Main = () => {
                             .map((item, index) => (
                                 <div key={index} className={styles.resultItem}>
                                     <p className={styles.bold}>{item.name}</p>
-                                    <img src={`https://img.omdbapi.com/?i=${item.imdbID}&apikey=80eb5c7d`} alt={item.name} className={styles.poster} />
+                                    <img src={`https://img.omdbapi.com/?i=${item.imdbID}&apikey=${OMDBAPIKEY}`} alt={item.name} className={styles.poster} />
                                 </div>
                             ))
                     ) : (
