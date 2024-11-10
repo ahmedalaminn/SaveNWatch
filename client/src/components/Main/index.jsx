@@ -9,7 +9,7 @@ const Main = () => {
     const [data, setData] = useState([]);
 
     useEffect(() => {
-        axios.get('https://entertainment-watchlist.onrender.com/getUser')
+        axios.get('https://entertainment-watchlist.onrender.com/routes/fetch')
             .then(response => {
                 const userData = response.data[0]; 
                 setUser(userData);
@@ -47,7 +47,7 @@ const Main = () => {
                 type: Type 
             };
     
-            const url = "https://entertainment-watchlist.onrender.com/addWatchlist"; 
+            const url = "https://entertainment-watchlist.onrender.com/routes/add"; 
             await axios.post(url, payload);
             alert('Movie added to watchlist!');
         } catch (error) {
