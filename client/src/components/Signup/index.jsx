@@ -20,7 +20,7 @@ const Signup = () => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		try {
-			const url = "https://entertainment-watchlist.onrender.com/signup";
+			const url = `${BACKEND_URL}/signup`;
 			const { data: res } = await axios.post(url, data);
 			navigate("/login");
 		} catch (error) {
