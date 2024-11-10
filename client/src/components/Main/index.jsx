@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import styles from "./styles.module.css";
+const BACKEND_URL = process.env.BACKEND_URL;
 const OMDBAPIKEY = process.env.REACT_APP_OMDBAPIKEY;
 
 const Main = () => {
