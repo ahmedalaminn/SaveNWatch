@@ -15,7 +15,7 @@ connection();
 // middlewares
 app.use(express.json());
 app.use(cors({
-    origin: 'https://savenwatch.netlify.app',
+    origin: ['https://savenwatch.netlify.app', 'https://localhost:3000'],
     credentials: true
 }));
 
