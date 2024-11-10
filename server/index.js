@@ -3,8 +3,8 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const connection = require("./db");
-const userRoutes = require("./routes/users");
-const authRoutes = require("./routes/auth");
+const loginRoutes = require("./routes/login");
+const signupRoutes = require("./routes/signup");
 const addRoutes = require("./routes/add.js");
 const fetchRoutes = require("./routes/fetch.js");
 const { User } = require('./models/user.js');
@@ -20,8 +20,8 @@ app.use(cors({
 }));
 
 // routes
-app.use("/routes/users", userRoutes);
-app.use("/routes/auth", authRoutes);
+app.use("/routes/login", loginRoutes);
+app.use("/routes/signup", signupRoutes);
 app.use("/routes/add", addRoutes);
 app.use("/routes/fetch", fetchRoutes);
 
