@@ -17,3 +17,5 @@ router.post('/addWatchlist', async (req, res) => {
         res.status(500).json({ message: 'Error updating watchlist', error });
     }
 });
+
+module.exports = router;
