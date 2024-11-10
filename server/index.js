@@ -20,10 +20,10 @@ app.use(cors({
 }));
 
 // routes
-app.use("/routes/login", loginRoutes);
-app.use("/routes/signup", signupRoutes);
-app.use("/routes/add", addRoutes);
-app.use("/routes/fetch", fetchRoutes);
+app.use("/login", loginRoutes);
+app.use("/signup", signupRoutes);
+app.use("/add", addRoutes);
+app.use("/fetch", fetchRoutes);
 
 // starting server
 const port = process.env.PORT || 5000;
