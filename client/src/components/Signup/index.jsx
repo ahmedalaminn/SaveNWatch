@@ -21,7 +21,7 @@ const Signup = () => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		try {
-			const url = `${BACKEND_URL}/signup`;
+			const url = `${BACKEND_URL}/routes/signup`;
 			const { data: res } = await axios.post(url, data);
 			navigate("/login");
 		} catch (error) {

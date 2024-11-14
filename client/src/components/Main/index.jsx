@@ -10,7 +10,7 @@ const Main = () => {
     const [data, setData] = useState([]);
 
     useEffect(() => {
-        axios.get(`${BACKEND_URL}/fetch`)
+        axios.get(`${BACKEND_URL}/routes/library/fetch`)
             .then(response => {
                 const userData = response.data[0]; 
                 setUser(userData);
@@ -48,7 +48,7 @@ const Main = () => {
                 type: Type 
             };
     
-            const url = `${BACKEND_URL}/add`; 
+            const url = `${BACKEND_URL}/routes/library/add`; 
             await axios.post(url, payload);
             alert('Movie added to watchlist!');
         } catch (error) {

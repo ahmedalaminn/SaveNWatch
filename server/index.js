@@ -5,8 +5,7 @@ const cors = require("cors");
 const connection = require("./db");
 const loginRoutes = require("./routes/login");
 const signupRoutes = require("./routes/signup");
-const addRoutes = require("./routes/add.js");
-const fetchRoutes = require("./routes/fetch.js");
+const libraryRoutes = require("./routes/library");
 const { User } = require('./models/user.js');
 
 // database connection
@@ -20,10 +19,9 @@ app.use(cors({
 }));
 
 // routes
-app.use("/login", loginRoutes);
-app.use("/signup", signupRoutes);
-app.use("/add", addRoutes);
-app.use("/fetch", fetchRoutes);
+app.use("/routes/login", loginRoutes);
+app.use("/routes/signup", signupRoutes);
+app.use("/routes/library", libraryRoutes);
 
 // starting server
 const port = process.env.PORT || 5000;
