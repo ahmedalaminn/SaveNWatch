@@ -10,9 +10,15 @@ const Main = () => {
     const [data, setData] = useState([]);
 
     useEffect(() => {
-        axios.get(`${BACKEND_URL}/routes/library/fetch`)
+        const token = localStorage.getItem("token");
+        const url = `${BACKEND_URL}/routes/library/fetch`
+        axios.get(`${BACKEND_URL}/routes/library/fetch`, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        })
             .then(response => {
-                const userData = response.data[0]; 
+                const userData = response.data;
                 setUser(userData);
             })
             .catch(err => console.log(err));
@@ -41,6 +47,7 @@ const Main = () => {
 
     const handleAddToWatchlist = async (item) => {
         try {
+            const token = localStorage.getItem("token");
             const { imdbID, Title, Type } = item; 
             const payload = { 
                 imdbID, 
@@ -49,11 +56,13 @@ const Main = () => {
             };
     
             const url = `${BACKEND_URL}/routes/library/add`; 
-            await axios.post(url, payload);
-            alert('Movie added to watchlist!');
+            await axios.post(url, payload, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
         } catch (error) {
             console.error('Error adding to watchlist:', error);
-            alert('Failed to add movie to watchlist');
         }
     };    
     
